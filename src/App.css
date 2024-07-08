@@ -12,3 +12,8 @@ body {
     background: #555;
     overflow: hidden;
 }
+
+.material-symbols-outlined {
+  font-size: 300px;
+  color: yellow;
+}
