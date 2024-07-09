@@ -1,0 +1,13 @@
+
+.contenairStudient h1{
+    background-color: rgb(231, 189, 85);
+    border: 5px solid rgb(114, 85, 10);
+    border-radius: 20px;
+    text-align: center;
+    color: black;
+    position: relative;
+    top: -30px;
+}
+.blurred {
+    filter: blur(4px)
+}
