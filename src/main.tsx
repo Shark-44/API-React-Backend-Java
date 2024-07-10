@@ -2,12 +2,15 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App.tsx'
+import { TabProvider } from "./context/TabContext";
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-     <BrowserRouter>
-        <App />
-     </BrowserRouter>
+      <TabProvider>
+         <BrowserRouter>
+            <App />
+         </BrowserRouter>
+     </TabProvider>
   </React.StrictMode>,
 )

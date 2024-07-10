@@ -7,9 +7,11 @@ import Langage from "../assets/images/langage.png";
 
 
 
+
 const Home = () => {
   return (
     <div className="containerHome">
+        
         <div className="title">
             <p>Ayant construit un backend avec Spring Boot (java) et pour interagir avec ma bdd. <br /> Un user pourra lire simplement et une connexion admin pourra faire les PUT/DELETE/POST</p>
         </div>

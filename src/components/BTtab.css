@@ -1,0 +1,32 @@
+.tabs-container {
+    display: flex;
+    gap: 16px;
+    position: fixed;
+    top: 10px;
+    right: 20px;
+  }
+  
+  .tab {
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .tab-success {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .tab-danger {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .tab-inactive {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  

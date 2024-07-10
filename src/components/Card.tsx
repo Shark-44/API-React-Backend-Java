@@ -38,7 +38,7 @@ function Card ({ onPopoverOpen, onPopoverClose }: CardProps) {
             });
     },[])
   
-    console.log(listStudent)
+    
     return (
         <div className="carddetail">
             {listStudent.map((list, index) => {
