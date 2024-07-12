@@ -1,0 +1,23 @@
+.form {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.form input {
+    padding: 5px;
+    margin: 10px;
+}
+.form #file {
+    font-size: medium;
+}
+
+.form button {
+    background: yellow;
+}
+
+.form  #close {
+    background: red;
+    padding: 0px;
+    margin: 3px 3px 3px 7px;
+    font-size: x-large;
+}
