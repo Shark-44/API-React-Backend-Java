@@ -30,3 +30,12 @@
     top: 10px;
     background: rgb(93, 224, 163);
 }
+#delbutton {
+    position: relative;
+    position: relative;
+    top: 15%;
+    right: -35%;
+}
+#delbutton button {
+    background: red;
+}

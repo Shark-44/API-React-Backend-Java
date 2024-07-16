@@ -1,10 +1,10 @@
 import "./Card.css"
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {Popover, PopoverTrigger, PopoverContent, Button} from "@nextui-org/react";
+import {Popover, PopoverTrigger, PopoverContent} from "@nextui-org/react";
 
 type Student = {
-    id: number;
+    idStudent: number;
     name: string;
     firstname: string;
     photo: string;
@@ -16,6 +16,7 @@ type Student = {
 interface CardProps {
     onPopoverOpen: () => void;
     onPopoverClose: () => void;
+    showDelete: boolean;
 }
 
 const formatDate = (dateString: string) => {
@@ -26,9 +27,15 @@ const formatDate = (dateString: string) => {
     return `${day}-${month}-${year}`;
 }
 
-function Card ({ onPopoverOpen, onPopoverClose }: CardProps) {
+function Card ({ onPopoverOpen, onPopoverClose, showDelete }: CardProps) {
     const [listStudent, setListStudent] = useState<Student[]>([]);
-    
+    const handleDelStudent = (id: number) => {
+        console.info(id)
+        axios.delete(`http://localhost:8080/api/students/${id}`)
+             .catch((error) => {
+            console.error('Error delete student:', error);
+        });
+    };
 
     useEffect (() => {
         axios.get('http://localhost:8080/api/students')
@@ -36,31 +43,34 @@ function Card ({ onPopoverOpen, onPopoverClose }: CardProps) {
             .catch((error) => {
                 console.error('Error fetching data:', error);
             });
-    },[])
-  
+    },[handleDelStudent])
+    
+
     
     return (
         <div className="carddetail">
-            {listStudent.map((list, index) => {
+            {listStudent.map((student, index) => {
                 return (
                     <div key={index} className="globalCard">
+                         {showDelete && (<div id="delbutton"><button onClick={() => handleDelStudent(student.idStudent)}>X</button></div>)}
                         <div className="details">
-                            <img src={`http://localhost:8080/uploads/images/${list.photo}`} alt="" />
-                            <p> Nom : {list.name}</p>
-                            <p>Prenom : {list.firstname}</p>
+                            <img src={`http://localhost:8080/uploads/images/${student.photo}`} alt="" />
+                            <p> Nom : {student.name}</p>
+                            <p>Prenom : {student.firstname}</p>
                         </div>
+                       
                         <Popover 
                             placement="top" 
                             showArrow={true}
                             onOpenChange={(open) => open ? onPopoverOpen() : onPopoverClose()}
                         >
                         <PopoverTrigger>
-                          <Button color="primary" variant="flat" className="capitalize">Click info</Button>
+                          <button color="primary" className="capitalize">Click info</button>
                         </PopoverTrigger>
                         <PopoverContent>
                             <div className="px-1 py-2">
-                                <div className="text-small font-bold">Anniversaire : {formatDate(list.birthday)}</div>
-                                <p>Langages étudiées : {list.langages.map(langage => langage.nameLangage).join(', ')}</p>
+                                <div className="text-small font-bold">Anniversaire : {formatDate(student.birthday)}</div>
+                                <p>Langages étudiées : {student.langages.map(langage => langage.nameLangage).join(', ')}</p>
                             </div>
                         </PopoverContent>
                       </Popover>

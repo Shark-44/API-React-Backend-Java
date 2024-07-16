@@ -15,21 +15,22 @@ function LoginForm({ onClose }: LoginFormProps) {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        `http://localhost:8080/login?username=${username}&password=${password}`
-      );
-      console.log(response.data); 
+        const response = await axios.post(
+            `http://localhost:8080/login`,
+            { username, password }, 
+            { withCredentials: true } 
+        );
+        console.log(response.data); 
 
-      onClose(); // Close the modal on successful login
+        onClose(); 
     } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        setError(error.response.data.message); 
-      } else {
-        setError('Unknown error occurred'); 
-      }
+        if (axios.isAxiosError(error) && error.response) {
+            setError(error.response.data.message); 
+        } else {
+            setError('Unknown error occurred'); 
+        }
     }
-  };
-
+};
   return (
     <form onSubmit={handleSubmit} className='loginform'>
       <div>
