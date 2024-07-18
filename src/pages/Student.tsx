@@ -12,6 +12,7 @@ function Student() {
     const [isConnected, setIsConnected] = useState<boolean>(false);
     const [showAddForm, setShowAddForm] = useState<boolean>(false);
     const [showDelete, setShowDelete] = useState<boolean>(false);
+    const [showManage, setShowManage] = useState<boolean>(false);
     const { activeTab } = useTab();
 
     useEffect(() => {
@@ -41,15 +42,16 @@ function Student() {
     const handleAddStudentClick = () => { setShowAddForm(true), setShowDelete(false)};
     const handleCloseAddForm = () => setShowAddForm(false);
     const handleDelStudentClick = () => {setShowDelete(true), setShowAddForm(false)};
+    const handlePutStudentClick = () => {setShowManage(true), setShowAddForm(false)};
 
     return (
         <div className={`contenairStudient ${isPopoverOpen ? 'blurred' : ''}`}>
             <h1>Liste des étudiants</h1>
-            <Card onPopoverOpen={handlePopoverOpen} onPopoverClose={handlePopoverClose} showDelete={showDelete}/>
+            <Card onPopoverOpen={handlePopoverOpen} onPopoverClose={handlePopoverClose} showDelete={showDelete} showManage={showManage}/>
             {isConnected && (
                 <div className="btAdmin">
                     <button onClick={handleAddStudentClick}>Ajouter un étudiant</button>
-                    <button>Modifier un étudiant</button>
+                    <button onClick={handlePutStudentClick}>Modifier un étudiant</button>
                     <button onClick={handleDelStudentClick}>Supprimer un étudiant</button>
                 </div>
             )}

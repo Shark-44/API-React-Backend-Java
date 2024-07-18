@@ -21,7 +21,7 @@ function CardS () {
             console.error('Error fetching data:', error);
         });
     },[])
-    console.log(listSchool)
+   
     return (
         <div className="cardSdetail">
                         {listSchool.map((list, index) => {
