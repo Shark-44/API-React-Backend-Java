@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import BTreturn from "../components/BTreturn";
-import portrait from "../assets/images/portrait.png";
+import portrait from "../assets/images/school_portrait.png";
 
 const useQuery = () => {
     return new URLSearchParams(useLocation().search);
